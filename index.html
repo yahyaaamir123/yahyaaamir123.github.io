@@ -6,79 +6,91 @@
     <title>Birthday Countdown</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f1f1f1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #fff;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            background-image: url('https://source.unsplash.com/1600x900/?celebration,party');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
         }
 
         .countdown {
-            text-align: center;
-            padding: 40px;
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 50px;
             border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            max-width: 500px;
-            width: 100%;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            width: 90%;
+            max-width: 600px;
         }
 
-        .countdown h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 30px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: bold;
+            letter-spacing: 4px;
+            color: #fff;
         }
 
         .time {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            font-size: 2.5em;
-            font-weight: bold;
+            justify-content: space-evenly;
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .time div {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 20px;
+            background-color: #333;
+            padding: 20px 40px;
             border-radius: 10px;
-            width: 80px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        .time div span {
+        .time div:hover {
+            transform: scale(1.1);
+            background-color: #ff6f61;
+        }
+
+        .time span {
+            font-size: 3em;
+            font-weight: bold;
             display: block;
-            font-size: 2.5em;
-            color: #fff;
         }
 
         .label {
-            font-size: 1em;
-            color: #fff;
-            opacity: 0.7;
-            margin-top: 5px;
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        .message {
+            font-size: 1.5em;
+            margin-top: 30px;
+            font-weight: bold;
+            color: #ff6f61;
         }
 
         @media (max-width: 768px) {
             .time {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
             }
 
             .time div {
-                width: 60px;
-                padding: 15px;
+                padding: 15px 30px;
             }
 
-            .countdown h1 {
+            h1 {
                 font-size: 2.5em;
             }
         }
@@ -106,6 +118,7 @@
                 <div class="label">Seconds</div>
             </div>
         </div>
+        <div class="message" id="message"></div>
     </div>
 
     <script>
@@ -128,6 +141,7 @@
                 clearInterval(interval);
                 document.querySelector(".countdown h1").textContent = "Happy Birthday!";
                 document.querySelector(".time").style.display = "none";
+                document.getElementById("message").textContent = "It's your special day! 🎉";
             }
         }
 
